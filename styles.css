@@ -1,5 +1,307 @@
+:root{
+    --violet-card: hsl(236, 72%, 79%);
+    --price-text-color: hsl(232, 13%, 33%);
+    --card-text-color: hsl(233, 13%, 49%);
+    --switch-text-color: hsl(234, 14%, 74%);
+    --dark-violet: hsl(237, 63%, 64%);
+}
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body{
+    font-family: "Montserrat", sans-serif;
+}
+.bg-top{
+    position: fixed;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+.bg-bottom{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+}
+.supreme-container{
+    position: relative;
+    min-height: 100vh;
+    height: auto;
+    min-width: 100%;
+    width: 100%;
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+    background-color: rgba(0,0,0,0.05);
+}
+.main-container{
+    /*background-color: rgba(0,0,0,0.1);*/
+    width: 70%;
+    min-width: 1200px;
+    min-height: 700px;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.main-header{
+    color: var(--card-text-color);
+}
+.switch-big-container{
+    /*background-color: rgba(0,0,0,0.1);*/
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    min-width: 210px;
+}
+.slider-text{
+    color: var(--switch-text-color);
+}
+.price-cards-container{
+    /*background-color: rgba(0,0,0,0.1);*/
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80%;
+}
+.price-card{
+    background-color: white;
+    padding-left: max(2vw, 15px);
+    padding-right: max(2vw, 15px);
+    width: 31%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+.price-card.active{
+    background: linear-gradient(180deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+    ;
+    height: 100%;
+    position: relative;
+    width: 37%;
+}
+.price{
+    color: var(--price-text-color);
+    font-size: 4rem;
+}
+.price.hide{
+    display: none;
+}
+.price-card.active .price{
+    font-size: 5rem;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+.card-title{
+    color: var(--card-text-color);
+    font-size: 1.2rem;;
+}
+.price-card.active .card-title{
+    color: white;
+    font-size: 1.4rem;
+    transition: all 0.3s ease-in-out;
+}
+.card-content-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-top: 1px solid hsl(234, 14%, 74%);
+}
+.card-content{
+    /*background-color: rgba(0,0,0,0.1);*/
+    width: 100%;
+    text-align: center;
+    padding: 2vh 0;
+    color: var(--card-text-color);
+    border-bottom: 1px solid hsl(234, 14%, 74%);
+    transition: all 0.3s ease-in-out;
+}
+.price-card.active .card-content{
+    font-size: 1.1rem;
+    color: white;
+}
+.button-link{
+    width: 100%;
+    padding: 17px 0;
+    background: linear-gradient(90deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+    text-decoration: none;
+    text-align: center;
+    border-radius: 0.6rem;
+    color: white;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid white;
+}
+.price-card.active .button-link{
+    background: white;
+    color: var(--dark-violet);
+}
+.button-link:hover{
+    background: white;
+    color: var(--dark-violet);
+    border: 1px solid var(--dark-violet);
+}
+.price-card.active .button-link:hover{
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+
+.switch{
+    display: inline-block;
+    width: 3rem;
+    height: 1.6rem;
+    position: relative;
+}
+.switch input{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, hsl(236, 72%, 79%),hsl(237, 63%, 64%));
+    border-radius: 12px;
+    transition:  opacity 0.2s ease;
+}
+.slider:hover{
+    opacity: 0.6;
+}
+.slider::before{
+    position: absolute;
+    content: "";
+    background-color: white;
+    width: 1.2rem;
+    height: 1.2rem;
+    bottom: 0.2rem;
+    right: 0.2rem;
+    border-radius: 50%;
+    transition: all 0.3s ease-out;
+}
+input:checked + .slider::before{
+    transform: translateX(-1.4rem);
+}
+
+.attribution{
+    position: absolute;
+    bottom: 1vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.attribution a{
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.attribution a:hover{
+    color: rgb(28, 145, 28);
+}
+
+@media(max-width: 1230px)
+{
+    .supreme-container{
+        padding-top: 18vh;
+    }
+    .main-container{
+        min-width: 760px;
+        width: 90vw;
+        min-height: 0;
+        height: 60vh;
+        min-height: 500px;
+        padding: 2vh 0;
+    }
+    .price-cards-container{
+        height: 75%;
+    }
+    .card-title{
+        margin-top: 1rem;
+        font-size: 1.1rem;
+    }
+    .price-card.active .card-title{
+        font-size: 1.25rem;
+    }
+    .price{
+        font-size: 3rem;
+    }
+    .price-card.active .price{
+        font-size: 3.5rem;
+    }
+    .card-content{
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+    .price-card.active .card-content{
+        font-size: 1rem;
+    }
+    .button-link{
+        padding: 12px 0;
+        font-size: 0.9rem;
+    }
+}
+@media(max-height: 760px) and (min-width: 760px){
+    .supreme-container{
+        padding-top: 10vh;
+    }
+}
+@media(max-width: 760px){
+    .supreme-container{
+        padding-top: 5vh;
+    }
+    .bg-top{
+        right: -10rem;
+        top: -3rem;
+    }
+    .bg-bottom{
+        display: none;
+    }
+    .main-container{
+        width: 60%;
+        height: auto;
+        min-width: 350px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .main-header{
+        margin-bottom: 1rem;
+    }
+    .switch-big-container{
+        margin-bottom: 1.5rem;
+    }
+    .price-cards-container{
+        flex-direction: column;
+    }
+    .price-card, .price-card.active{
+        width: 100%;
+        margin: 10px 0;
+        height: 400px;
+    }
+    .price-card.active .card-content{
+        font-size: 0.9rem;
+    }
+    .price-card.active .price{
+        font-size: 3rem;
+    }
+    .price-card.active .card-title{
+        font-size: 1.1rem;
+    }
+}
+@media(max-width: 565px){
+    .attribution{
+        width: 100%;
+    }
 }
