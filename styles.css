@@ -57,6 +57,7 @@ body{
     align-items: center;
     width: 20%;
     min-width: 210px;
+    margin-bottom: 1rem;
 }
 .slider-text{
     color: var(--switch-text-color);
