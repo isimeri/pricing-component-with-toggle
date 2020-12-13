@@ -2,15 +2,13 @@ const cards = document.querySelectorAll(".price-card");
 const priceSwitch = document.querySelector("#price-mode");
 const annualPrice = document.querySelectorAll(".annual-price");
 const monthlyPrice = document.querySelectorAll(".monthly-price");
+const slider = document.querySelector(".slider");
 
 cards.forEach(card => {
     card.addEventListener("click", function(e){
         cards.forEach(cardsu => {
             if(!e.currentTarget.classList.contains("active"))
             { 
-                console.log(e.currentTarget);
-                console.log(cardsu);
-                console.log("tihuana");
                 cardsu.classList.remove("active");
             }
         });
@@ -18,7 +16,18 @@ cards.forEach(card => {
     });
 });
 
-priceSwitch.addEventListener("change", function(){
+priceSwitch.addEventListener("change", switcharoo);
+priceSwitch.addEventListener("click", switcharoo);
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === "Space") {
+      e.preventDefault();
+      slider.click();
+    }
+  });
+
+
+  function switcharoo(){
     if(priceSwitch.checked)
     {
         monthlyPrice.forEach(mprice => {
@@ -37,4 +46,4 @@ priceSwitch.addEventListener("change", function(){
             aprice.classList.add("hide");
         });
     }
-})
+}
